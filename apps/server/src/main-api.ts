@@ -1,4 +1,5 @@
 import Fastify from 'fastify'
+import { pool } from './db.js'
 
 const app = Fastify({
   logger: true
@@ -6,6 +7,11 @@ const app = Fastify({
 
 app.get('/', async (request, reply) => {
   return { hello: 'world' }
+})
+
+app.get('/db', async (request, reply) => {
+  const { rows } = await pool.query('SELECT now()')
+  return { now: rows[0].now }
 })
 
 
