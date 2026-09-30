@@ -1,5 +1,5 @@
 import Fastify from 'fastify'
-import { pool } from './db.js'
+import { pool } from './db/index.js'
 import { redis } from './redis.js'
 
 const app = Fastify({
